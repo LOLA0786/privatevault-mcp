@@ -1,0 +1,35 @@
+[project]
+name = "privatevault-mcp"
+version = "0.1.0"
+description = "PrivateVault MCP Server - Cognitive Runtime Security Control Plane for AI Agents"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "pydantic>=2.9.0",
+    "httpx>=0.27.0",
+    "python-dotenv>=1.0.0",
+    "structlog>=24.0.0",
+    "psycopg2-binary>=2.9.0",
+    "alembic>=1.13.0",
+    "rich>=13.0.0",
+    "mcp>=0.1.0",  # FastMCP / MCP protocol support
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "httpx>=0.27.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["privatevault_mcp*"]
+
+[project.scripts]
+privatevault-mcp = "privatevault_mcp.main:main"
+
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
