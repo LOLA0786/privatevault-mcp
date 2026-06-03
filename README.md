@@ -43,15 +43,15 @@ It is a thin, reliable proxy that forwards all requests to the production Privat
 
 ```mermaid
 graph TD
-    A[Claude Desktop / Cursor / LangGraph / CrewAI / OpenAI Agent] --> B[MCP Client]
-    B --> C[PrivateVault MCP Server<br/>Thin Gateway Only]
-    C --> D[Authentication + Input Validation + Retry + Logging]
-    D --> E[POST /api/evaluate<br/>with {prompt, context, metadata}]
-    E --> F[PrivateVault Backend Engine<br/>(https://github.com/LOLA0786/PrivateVault.ai)]
-    F --> G[Risk Score + Severity + Anomalies + Decision<br/>Single Source of Truth]
+    A[Claude Desktop Cursor LangGraph CrewAI OpenAI Agent] --> B[MCP Client]
+    B --> C[PrivateVault MCP Server Thin Gateway]
+    C --> D[Authentication Validation Retry Logging]
+    D --> E[POST api evaluate]
+    E --> F[PrivateVault Backend Engine httpsgithubcomLOLA0786PrivateVaultai]
+    F --> G[Risk Score Severity Anomalies Decision Single Source of Truth]
     G --> H[MCP Response Transformation]
-    H --> I[Agent receives final result]
-    
+    H --> I[Agent Receives Final Result]
+
     style C fill:#e0f2fe
     style F fill:#fef3c7
     style G fill:#ecfdf5
