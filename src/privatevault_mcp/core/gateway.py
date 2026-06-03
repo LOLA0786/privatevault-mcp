@@ -40,7 +40,7 @@ class PrivateVaultGateway:
             "metadata": {
                 **metadata,
                 "source": "mcp_gateway",
-                "timestamp": datetime.utcnow().isoformat()
+                "timestamp": datetime.now().isoformat()
             }
         }
 

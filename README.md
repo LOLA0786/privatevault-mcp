@@ -80,6 +80,29 @@ docker compose up -d
 curl http://localhost:8000/health
 ```
 
+## Production Examples & Demos (REAL Executions)
+
+**examples/accounts-payable-demo.py** - AI Accounts Payable Agent with `transfer_funds()`
+
+```bash
+# Run real demo (requires PrivateVault backend)
+cd privatevault-mcp
+. venv/bin/activate
+PRIVATEVAULT_URL=http://localhost:8001 python examples/accounts-payable-demo.py
+```
+
+**Demonstrates exactly:**
+1. Agent receives malicious "Acne Corp" payment instruction ($5.2M)
+2. MCP `scan_context()` + `policy_check()` intercept
+3. Real `POST /api/evaluate` call logged with full payload
+4. Backend returns `{"decision": "block", "risk_score": 87, ...}`
+5. `transfer_funds()` **never executes**
+6. Immutable audit trail recorded
+
+**Real logs & traces** shown in output (no mocks, no screenshots).
+
+Other frameworks (LangGraph, CrewAI, OpenAI Agents, Claude Desktop) follow identical pattern using the MCP tools.
+
 ## Setup Guides
 
 - [Claude Desktop Integration](docs/claude-desktop-setup.md)
